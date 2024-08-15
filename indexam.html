@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serg's Website | AM | Գլխավոր</title>
+    <link type="png" rel="Website icon" href="logoPortfolio.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div id="buynow-logic" style="display: none;">
+        <style>
+            .form {
+                width: 500px;
+                margin: 0 auto;
+                margin-top: 150px;
+                background: #fff;
+            }
+
+            .form-item {
+                position: relative;
+                margin-bottom: 15px;
+            }
+
+            .form-item input {
+                display: block;
+                width: 400px;
+                height: 43px;
+                background: transparent;
+                border: 1px solid #ccc;
+                transition: all .3s ease;
+                padding: 0 15px;
+            }
+
+            .form-item input:focus {
+                border-color: blue;
+            }
+
+            .form-item label {
+                position: absolute;
+                cursor: pointer;
+                z-index: 2;
+                top: 13px;
+                left: 10px;
+                font-size: 12px;
+                font-weight: bold;
+                background: #fff;
+                padding: 0 10px;
+                color: #999;
+                transition: all .3s ease;
+            }
+
+            .form-item input:focus+label,
+            .form-item input:valid+label {
+                font-size: 11px;
+                top: -5px;
+            }
+
+            .form-item input:focus+label {
+                color: blue;
+            }
+
+            #Phones {
+                width: 75.3%;
+            }
+
+            #PhoneInput {
+                margin-left: 18.7%;
+            }
+
+            #Country,
+            #ChooseWebsite,
+            #countryCode {
+                padding: 11.5px 0;
+                border: 1px solid #ccc;
+                border-radius: 0;
+                outline: none;
+                color: #999;
+                font-weight: bold;
+                font-size: 12px;
+            }
+
+            #countryCode {
+                transform: translateY(156.25%);
+            }
+
+            #Country,
+            #ChooseWebsite {
+                width: 400px;
+            }
+
+            .form-1 {
+                margin-left: 17%;
+                margin-top: 0;
+            }
+
+            .form-2 {
+                margin-left: 55%;
+                margin-top: -25.75%;
+            }
+
+            #info {
+                transform: translateY(1470%);
+                margin-left: 40.5%;
+            }
+
+            #info2 {
+                transform: translateY(250%);
+                margin-left: 41.5%;
+            }
+
+            #buyform button {
+                margin-left: -37%;
+            }
+
+            #buyform hr {
+                margin-left: -135%;
+            }
+        </style>
+
+        <script>
+
+            ///////////////////////////////
+            ////////   PHONE INPUT   //////
+            ///////////////////////////////
+
+            function validatePhoneNumber(event) {
+                const input = event.target;
+                const inputValue = input.value;
+                const numericValue = inputValue.replace(/\D/g, '');
+                input.value = numericValue;
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                var phoneInput = document.getElementById("Phones");
+                var countryCodeSelect = document.getElementById("countryCode");
+
+                phoneInput.addEventListener("input", function () {
+                    formatPhoneNumber();
+                });
+
+                countryCodeSelect.addEventListener("change", function () {
+                    phoneInput.value = ''; // Clear the input
+                    formatPhoneNumber();
+                });
+
+                phoneInput.addEventListener("keydown", function (event) {
+                    if (event.key === "Backspace" || event.key === "Delete") {
+                        phoneInput.value = '';
+                        formatPhoneNumber();
+                    }
+                });
+            });
+
+            function formatPhoneNumber() {
+                var phoneInput = document.getElementById("Phones");
+                var countryCodeSelect = document.getElementById("countryCode");
+                var phoneNumber = phoneInput.value.replace(/\D/g, ''); // Remove non-numeric characters
+
+                if (countryCodeSelect.value !== "ARM") {
+                    phoneInput.value = formatNonArmenianPhoneNumber(phoneNumber);
+                } else {
+                    phoneInput.value = formatArmenianPhoneNumber(phoneNumber);
+                }
+            }
+
+            function formatNonArmenianPhoneNumber(phoneNumber) {
+                var formattedNumber = '';
+
+                if (phoneNumber.length > 0) {
+                    formattedNumber += '(' + phoneNumber.substring(0, 3) + ')';
+
+                    if (phoneNumber.length > 3) {
+                        formattedNumber += ' ' + phoneNumber.substring(3, 6);
+
+                        if (phoneNumber.length > 6) {
+                            formattedNumber += '-' + phoneNumber.substring(6, 10);
+                        }
+                    }
+                }
+
+                return formattedNumber;
+            }
+
+            function formatArmenianPhoneNumber(phoneNumber) {
+                var formattedNumber = '';
+
+                if (phoneNumber.length > 0) {
+                    formattedNumber += '(' + phoneNumber.substring(0, 2) + ')';
+
+                    if (phoneNumber.length > 2) {
+                        formattedNumber += ' ' + phoneNumber.substring(2, 4);
+
+                        if (phoneNumber.length > 4) {
+                            formattedNumber += '-' + phoneNumber.substring(4, 6);
+
+                            if (phoneNumber.length > 6) {
+                                formattedNumber += '-' + phoneNumber.substring(6, 10);
+                            }
+                        }
+                    }
+                }
+
+                return formattedNumber;
+            }
+        </script>
+
+        <div id="buyform">
+            <br><br>
+            <p id="info">Ձեր կայքի մասին մի փոքր տեղեկություն։</p>
+            <p id="info2">Ձեր մասին մի փոքր տեղեկություն։</p>
+            <div class="form form-1">
+                <select id="countryCode">
+                    <option value="ESP">ESP (+34)</option>
+                    <option value="FRA">FRA (+33)</option>
+                    <option value="UAE">UAE (+971)</option>
+                    <option value="ARM">ARM (+374)</option>
+                </select>
+                <br><br>
+                <div class="form-item" id="PhoneInput">
+                    <input type="text" id="Phones" maxlength="13" autocomplete="off"
+                        oninput="validatePhoneNumber(event)" required>
+                    <label for="phone">Մուտքագրեք ձեր հեռախոսահամարը</label>
+                </div>
+                <div class="form-item">
+                    <input type="name" id="name" autocomplete="off" required>
+                    <label for="name">Անուն</label>
+                </div>
+                <div class="form-item">
+                    <input type="username" id="username" autocomplete="off" required>
+                    <label for="username">Օգտանուն</label>
+                </div>
+                <div class="form-item">
+                    <input type="date" id="date" autocomplete="off" required>
+                    <label for="date">Մուտքագրեք ձեր ամսաթիվը</label>
+                </div>
+                <br><br>
+                <div class="form-item">
+                    <select id="ChooseWebsite">
+                        <option value="default">Ընտրեք ձեր կայքի դիզայնը</option>
+                        <option value="design">Կայքի դիզայն 1</option>
+                        <option value="design">Կայքի դիզայն 2</option>
+                        <option value="design">Ծրագրի դիզայն</option>
+                        <option value="design">UI/UX</option>
+                    </select>
+                </div>
+                <div class="form-item">
+                    <select id="ChooseWebsite">
+                        <option value="default">Ընտրեք ձեր կայքի լեզվը</option>
+                        <option value="lang">Անգլերեն</option>
+                        <option value="lang">Իսպաներեն</option>
+                        <option value="lang">Պորտուգալերեն</option>
+                        <option value="lang">Արաբերեն</option>
+                        <option value="lang">Ռուսերեն</option>
+                        <option value="lang">Գերմաներեն</option>
+                        <option value="lang">Ֆրանսերեն</option>
+                        <option value="lang">Իտալերեն</option>
+                        <option value="lang">Հունարեն</option>
+                        <option value="lang">Շվեդերեն</option>
+                        <option value="lang">Նիդերլանդերեն</option>
+                        <option value="lang">Լեհերեն</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form form-2">
+                <div class="country-input">
+                    <div class="form-item">
+                        <select id="Country">
+                            <option value="default">Ընտրեք ձեր երկիրը</option>
+                            <option value="Spain">Իսպանիա</option>
+                            <option value="United States">ԱՄՆ</option>
+                            <option value="United Kingdom">Մեծ Բրիտանիա</option>
+                            <option value="Canada">Կանադա</option>
+                            <option value="Australia">Ավստրալիա</option>
+                            <option value="Germany">Գերմանիա</option>
+                            <option value="France">Ֆրանսիա</option>
+                            <option value="Italy">Իտալիա</option>
+                            <option value="Netherlands">Նիդերլանդեր</option>
+                            <option value="Brazil">Բրազիլիա</option>
+                            <option value="China">Չինաստան</option>
+                            <option value="India">Հնդկաստան</option>
+                            <option value="Japan">Ճապոնիա</option>
+                            <option value="South Korea">Հարավային Կորեա</option>
+                            <option value="Mexico">Մեքսիկա</option>
+                            <option value="Argentina">Արգենտինա</option>
+                            <option value="South Africa">Հարավաֆրիկա</option>
+                            <option value="Saudi Arabia">Սաուդյան Արաբիա</option>
+                            <option value="United Arab Emirates">Միացյալ Արաբական Էմիրաթներ</option>
+                            <option value="Switzerland">Շվեյցարիա</option>
+                            <option value="Sweden">Շվեդիա</option>
+                            <option value="Norway">Նորվեգիա</option>
+                            <option value="Denmark">Դանիա</option>
+                            <option value="Finland">Ֆինլանդիա</option>
+                            <option value="Poland">Լեհաստան</option>
+                            <option value="Austria">Ավստրիա</option>
+                            <option value="Belgium">Բելգիա</option>
+                            <option value="Greece">Հունաստան</option>
+                            <option value="Portugal">Պորտուգալիա</option>
+                            <option value="Ireland">Իռլանդիա</option>
+                            <option value="New Zealand">Նոր Զելանդիա</option>
+                            <option value="Singapore">Սինգապուր</option>
+                            <option value="Malaysia">Մալայզիա</option>
+                            <option value="Thailand">Թայլանդ</option>
+                            <option value="Indonesia">Ինդոնեզիա</option>
+                            <option value="Philippines">Ֆիլիպիններ</option>
+                            <option value="Vietnam">Վիետնամ</option>
+                            <option value="Egypt">Եգիպտոս</option>
+                            <option value="Nigeria">Նիգերիա</option>
+                            <option value="Kenya">Քենիա</option>
+                            <option value="Morocco">Մարոկո</option>
+                            <option value="Pakistan">Պակիստան</option>
+                            <option value="Bangladesh">Բանգլադեշ</option>
+                            <option value="Colombia">Կոլումբիա</option>
+                            <option value="Chile">Չիլի</option>
+                            <option value="Peru">Պերու</option>
+                            <option value="Venezuela">Վենեսուելա</option>
+                            <option value="Ukraine">Ուկրաինա</option>
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <input type="text" id="city" autocomplete="off" required>
+                        <label for="city">Գրեք ձեր քաղաքը</label>
+                    </div>
+                    <div class="form-item">
+                        <input type="text" id="street" autocomplete="off" required>
+                        <label for="street">Գրեք ձեր փողոցը</label>
+                    </div>
+                    <div class="form-item">
+                        <input type="text" id="post" autocomplete="off" required>
+                        <label for="post">Գրեք ձեր փոստային ինդեքսը</label>
+                    </div>
+                    <br><br>
+                    <div class="form-item">
+                        <input type="text" id="color" autocomplete="off" required>
+                        <label for="color">Գրեք ձեր սիրած գույնը</label>
+                    </div>
+                    <div class="form-item">
+                        <input type="text" id="website" autocomplete="off" required>
+                        <label for="website">Թելլուրեք, թե որ կայք ցանկանում եք</label>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <button type="button">Գնել ձեր կայքը</button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- START TO ORIGINAL LOGIC -->
+    <!-- START TO ORIGINAL LOGIC --> <!-- START TO ORIGINAL LOGIC -->
+    <!-- START TO ORIGINAL LOGIC -->
+    <!-- START TO ORIGINAL LOGIC --> <!-- START TO ORIGINAL LOGIC -->
+    <!-- START TO ORIGINAL LOGIC -->
+
+
+
+    <header class="header">
+        <div class="lang-selector">
+            <select id="language">
+                <option value="default">Լեզու</option>
+                <option value="french" data-href="indexfr.html">Ֆրանսերեն</option>
+                <option value="italian" data-href="indexit.html">Իտալերեն</option>
+                <option value="spanish" data-href="indexes.html">Իսպաներեն</option>
+                <option value="german" data-href="indexge.html">Գերմաներեն</option>
+                <option value="english" data-href="index.html">Անգլերեն</option>
+            </select>
+        </div>
+
+        <li class="logo" onclick="refresh()">S. Ghazaryan</li>
+        <ion-icon id="menu-btn" class="menu-btn" name="menu-outline"></ion-icon>
+        <nav class="navbar">
+            <a href="#home" id="homeButton" class="active">Գլխավոր</a>
+            <a href="#about" id="aboutButton">Մեր մասին</a>
+            <a href="#services" id="servicesButton">Ծառայություններ</a>
+            <a href="#contact" id="contactButton">Կապ</a>
+            <li class="buybtn" id="buyNowButton">Գնել Հիմա</li>
+        </nav>
+    </header>
+
+
+    <div id="normal-logic" style="display: block;">
+        <div id="cookieConsent">
+            <p>Այս կայքը օգտագործում է քերեկային ֆայլեր՝ ձեզ ապահովելու լավագույն արտաքին թերթիկը: Շատերը կանխապես
+                արդեն հրապարակված ֆայլերը վերագրանցման կարիք չունեն: Դատարկման միջոցները օգտագործվում են ձեր
+                նախաձեռնությունները հիշեցնելու եւ անունը կամ էլ-հասցեն չպահպանելու համար: Դրանք օգտագործվում են ձեր
+                զգուշացումների հիշողության եւ անվանական օգտակար անվտանգության տվյալների առաջադրանքների համար:</p>
+            <button id="acceptCookies">Ընդունել ֆայլերը</button>
+        </div>
+
+        <section id="home" class="home">
+            <div class="home-image">
+                <img class="profileimage" src="nodejs-1-logo-svgrepo-com (1).svg" alt="">
+                <img class="profileimage" src="react-svgrepo-com.svg" alt="">
+                <img class="profileimage" src="bootstrap-svgrepo-com.svg" alt="">
+                <img class="profileimage" src="c-sharp-svgrepo-com.svg" alt="">
+                <img class="profileimage" src="python-svgrepo-com.svg" alt="">
+                <img class="profileimage" src="html-5-svgrepo-com (1).svg" alt="">
+                <img class="profileimage" src="js-official-svgrepo-com.svg" alt="">
+                <img class="profileimage" src="css-3-svgrepo-com (2).svg" alt="">
+            </div>
+
+            <div class="home-content">
+                <h1>Բարև, ես Սերգ Ղազարյան եմ</h1>
+                <h3>Վեբ դիզայներ</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit aliquid minus neque
+                    perspiciatis veritatis nihil similique odio, alias consectetur vel iste facilis. Similique
+                    ducimus necessitatibus distinctio, quam minima assumenda quos.</p>
+
+                <div class="home-sci">
+                    <a title="Instagram" href="#"><i class='bx bxl-instagram-alt'></i></a>
+                    <a title="Twitter" href="#"><i class='bx bxl-twitter'></i></a>
+                    <a title="GitHub" href="#"><i class='bx bxl-github'></i></a>
+                </div>
+
+                <a href="#" class="btn">Ներբեռնել CV-ն</a>
+            </div>
+
+        </section>
+
+        <section class="about" id="about">
+            <div class="about-section">
+                <br><br>
+                <h2 style="width: max-content;">Իմ մասին</h2>
+                <br><br>
+                <p>Բարի գալուստ իմ պորտֆոլիոյին! Ես եմ Վեբ Ծրագրավորող՝ ունեցող մասնագիտությունը մոդեռն եւ
+                    պատասխանատու կայքեր ստեղծելու։ Իմ նպատակն է միացնել ստեղծածություն եւ ֆունկցիոնալությունը, որոնք
+                    անհատական եւ առանձնայինեւ անհամարակալված թվում տրամադրելու են տեսանելի եւ հարմարավետ թվարկածներ:
+                </p>
+            </div>
+            <div class="about-section">
+                <ul>
+                    <li><strong>Հմտություններ:</strong> HTML, CSS, JavaScript, React, Node JS, C#, Python, Bootstrap:
+                    </li>
+                    <li><strong>Մասնագորւմներ:</strong> Օնլայն գնումների կայք, Չատ կայք, Ռեստորանային կայք, Խաղերի կայք
+                        (նման Friv-ի) և ավելին:</li>
+                    <li><strong>Հետադարձ կապ:</strong> Դուք կարող եք գտնել այն ստորև:</li>
+
+                </ul>
+            </div>
+        </section>
+
+
+        <section id="services" class="about">
+            <div class="work-section">
+                <br><br>
+                <h2 style="color: #00abf0;" class="section__title">
+                    Իմ <br>
+                    Վերջին <br>
+                    Աշխատանքները
+                </h2>
+
+                <div class="work__container container grid">
+                    <article class="work__card">
+                        <button onclick="buynow()" class="work__link">
+                            <img src="project1.png" alt="պարունակություն" class="work__img">
+                            <i class='bx bx-right-arrow-circle work__icon'></i>
+                        </button>
+
+                        <h2 class="work__title">Կրեատիվ Վեբկայան</h2>
+                        <span class="work__subtitle">Վեբկայան Դիզայն</span>
+                    </article>
+
+                    <br>
+                    <hr style="width: 60%; margin-left: 19.5%;"><br><br>
+
+                    <article class="work__card">
+                        <button onclick="buynow()" class="work__link">
+                            <img src="project2.png" alt="պարունակություն" class="work__img">
+                            <i class='bx bx-right-arrow-circle work__icon'></i>
+                        </button>
+
+                        <h2 class="work__title">Կրեատիվ Վեբկայան</h2>
+                        <span class="work__subtitle">Վեբկայան Դիզայն</span>
+                    </article>
+
+                    <br>
+                    <hr style="width: 60%; margin-left: 19.5%;"><br><br>
+
+                    <article class="work__card">
+                        <button onclick="buynow()" class="work__link">
+                            <img src="project3.png" alt="պարունակություն" class="work__img">
+                            <i class='bx bx-right-arrow-circle work__icon'></i>
+                        </button>
+
+                        <h2 class="work__title">Ամենահայտնի App</h2>
+                        <span class="work__subtitle">Ծրագրավորում Հեռահար</span>
+                    </article>
+
+                    <br>
+                    <hr style="width: 60%; margin-left: 19.5%;"><br><br>
+
+                    <article class="work__card">
+                        <button onclick="buynow()" class="work__link">
+                            <img src="project4.png" alt="պարունակություն" class="work__img">
+                            <i class='bx bx-right-arrow-circle work__icon'></i>
+                        </button>
+
+                        <h2 class="work__title">Միջամտության Դիզայն</h2>
+                        <span class="work__subtitle">UI/UX</span>
+                    </article>
+                </div>
+            </div>
+            <br>
+            <hr style="width: 60%; margin-left: 19.5%;">
+    </div>
+    </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <br><br>
+        <h2>Կապ</h2>
+        <form action="">
+            <div class="input-box">
+                <div class="input-field field">
+                    <input type="text" placeholder="Անուն Ազգանուն" id="name" class="item" autocomplete="off">
+                    <div class="error-txt">Անուն Ազգանունը չի կարող դատարկ լինել</div>
+                </div>
+                <div class="input-field field">
+                    <input type="text" placeholder="Էլ․ հասցե" id="email" class="item" autocomplete="off">
+                    <div class="error-txt email">Էլ․ հասցեն չի կարող դատարկ լինել</div>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <div class="input-field field">
+                    <input type="text" placeholder="Հեռախոսահամար" id="phone" class="item" autocomplete="off">
+                    <div class="error-txt">Հեռախոսահամարը չի կարող դատարկ լինել</div>
+                </div>
+                <div class="input-field field">
+                    <input type="text" placeholder="Թեմա" id="subject" class="item" autocomplete="off">
+                    <div class="error-txt">Թեման չի կարող դատարկ լինել</div>
+                </div>
+            </div>
+
+            <div class="textarea-field field">
+                <textarea id="message" cols="30" rows="10" placeholder="Ձեր նամակը" class="item"
+                    autocomplete="off"></textarea>
+                <div class="error-txt">Նամակը չի կարող դատարկ լինել</div>
+            </div>
+
+            <button type="submit" onclick="sendEmail()">Ուղարկել Նամակ</button>
+        </form>
+        <br>
+        <hr>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-left">
+                        <h3>Հետևեք ինձ</h3>
+                        <ul class="social-links">
+                            <li><a title="Instagram" href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+                            <li><a title="Twitter" href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
+                            <li><a title="GitHub" href="#"><ion-icon name="logo-github"></ion-icon></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-right">
+                        <h3>Կապվեք մեր գրասենյակի հետ</h3>
+                        <ul class="list-unstyled li-space-lg">
+                            <p><span class="material-icons icon">
+                                    phone
+                                </span><a title="Հեռախոսահամար" href="tel:003024630820">+34
+                                    614 188 876</a></p>
+                            <p><span class="material-icons icon">
+                                    email
+                                </span><a title="Էլեկտրոնային հասցե"
+                                    href="mailto:armour.american.councils@gmail.com">ghazaryan7.y@gmail.com</a>
+                            </p>
+                        </ul>
+                    </div>
+                    <p class="copyright">
+                        &copy; 2024 Serg's Website. Բոլոր իրավունքները պաշտպանված են:
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </section>
+    </div>
+    </div>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="email.js"></script>
+
+    <script src="scriptam.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

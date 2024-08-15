@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serg's Website | FR | Accueil</title>
+    <link type="png" rel="Website icon" href="logoPortfolio.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div id="buynow-logic" style="display: none;">
+        <style>
+            .form {
+                width: 500px;
+                margin: 0 auto;
+                margin-top: 150px;
+                background: #fff;
+            }
+
+            .form-item {
+                position: relative;
+                margin-bottom: 15px;
+            }
+
+            .form-item input {
+                display: block;
+                width: 400px;
+                height: 43px;
+                background: transparent;
+                border: 1px solid #ccc;
+                transition: all .3s ease;
+                padding: 0 15px;
+            }
+
+            .form-item input:focus {
+                border-color: blue;
+            }
+
+            .form-item label {
+                position: absolute;
+                cursor: pointer;
+                z-index: 2;
+                top: 13px;
+                left: 10px;
+                font-size: 12px;
+                font-weight: bold;
+                background: #fff;
+                padding: 0 10px;
+                color: #999;
+                transition: all .3s ease;
+            }
+
+            .form-item input:focus+label,
+            .form-item input:valid+label {
+                font-size: 11px;
+                top: -5px;
+            }
+
+            .form-item input:focus+label {
+                color: blue;
+            }
+
+            #Phones {
+                width: 75.3%;
+            }
+
+            #PhoneInput {
+                margin-left: 18.7%;
+            }
+
+            #Country,
+            #ChooseWebsite,
+            #countryCode {
+                padding: 11.5px 0;
+                border: 1px solid #ccc;
+                border-radius: 0;
+                outline: none;
+                color: #999;
+                font-weight: bold;
+                font-size: 12px;
+            }
+
+            #countryCode {
+                transform: translateY(156.25%);
+            }
+
+            #Country,
+            #ChooseWebsite {
+                width: 400px;
+            }
+
+            .form-1 {
+                margin-left: 17%;
+                margin-top: 0;
+            }
+
+            .form-2 {
+                margin-left: 55%;
+                margin-top: -25.75%;
+            }
+
+            #info {
+                transform: translateY(1470%);
+                margin-left: 40.5%;
+            }
+
+            #info2 {
+                transform: translateY(250%);
+                margin-left: 41.5%;
+            }
+
+            #buyform button {
+                margin-left: -37%;
+            }
+
+            #buyform hr {
+                margin-left: -135%;
+            }
+        </style>
+
+        <script>
+
+            ///////////////////////////////
+            ////////   PHONE INPUT   //////
+            ///////////////////////////////
+
+            function validatePhoneNumber(event) {
+                const input = event.target;
+                const inputValue = input.value;
+                const numericValue = inputValue.replace(/\D/g, '');
+                input.value = numericValue;
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                var phoneInput = document.getElementById("Phones");
+                var countryCodeSelect = document.getElementById("countryCode");
+
+                phoneInput.addEventListener("input", function () {
+                    formatPhoneNumber();
+                });
+
+                countryCodeSelect.addEventListener("change", function () {
+                    phoneInput.value = ''; // Clear the input
+                    formatPhoneNumber();
+                });
+
+                phoneInput.addEventListener("keydown", function (event) {
+                    if (event.key === "Backspace" || event.key === "Delete") {
+                        phoneInput.value = '';
+                        formatPhoneNumber();
+                    }
+                });
+            });
+
+            function formatPhoneNumber() {
+                var phoneInput = document.getElementById("Phones");
+                var countryCodeSelect = document.getElementById("countryCode");
+                var phoneNumber = phoneInput.value.replace(/\D/g, ''); // Remove non-numeric characters
+
+                if (countryCodeSelect.value !== "ARM") {
+                    phoneInput.value = formatNonArmenianPhoneNumber(phoneNumber);
+                } else {
+                    phoneInput.value = formatArmenianPhoneNumber(phoneNumber);
+                }
+            }
+
+            function formatNonArmenianPhoneNumber(phoneNumber) {
+                var formattedNumber = '';
+
+                if (phoneNumber.length > 0) {
+                    formattedNumber += '(' + phoneNumber.substring(0, 3) + ')';
+
+                    if (phoneNumber.length > 3) {
+                        formattedNumber += ' ' + phoneNumber.substring(3, 6);
+
+                        if (phoneNumber.length > 6) {
+                            formattedNumber += '-' + phoneNumber.substring(6, 10);
+                        }
+                    }
+                }
+
+                return formattedNumber;
+            }
+
+            function formatArmenianPhoneNumber(phoneNumber) {
+                var formattedNumber = '';
+
+                if (phoneNumber.length > 0) {
+                    formattedNumber += '(' + phoneNumber.substring(0, 2) + ')';
+
+                    if (phoneNumber.length > 2) {
+                        formattedNumber += ' ' + phoneNumber.substring(2, 4);
+
+                        if (phoneNumber.length > 4) {
+                            formattedNumber += '-' + phoneNumber.substring(4, 6);
+
+                            if (phoneNumber.length > 6) {
+                                formattedNumber += '-' + phoneNumber.substring(6, 10);
+                            }
+                        }
+                    }
+                }
+
+                return formattedNumber;
+            }
+        </script>
+
+        <div id="buyform">
+            <br><br>
+            <p id="info">Un peu d'informations sur votre site Web.</p>
+            <p id="info2">Un peu d'informations de votre part.</p>
+            <div class="form form-1">
+                <select id="countryCode">
+                    <option value="ESP">ESP (+34)</option>
+                    <option value="FRA">FRA (+33)</option>
+                    <option value="UAE">UAE (+971)</option>
+                    <option value="ARM">ARM (+374)</option>
+                </select>
+                <br><br>
+                <div class="form-item" id="PhoneInput">
+                    <input type="text" id="Phones" maxlength="13" autocomplete="off"
+                        oninput="validatePhoneNumber(event)" required>
+                    <label for="phone">Entrez votre numéro de téléphone</label>
+                </div>
+                <div class="form-item">
+                    <input type="name" id="name" autocomplete="off" required>
+                    <label for="name">Nom</label>
+                </div>
+                <div class="form-item">
+                    <input type="username" id="username" autocomplete="off" required>
+                    <label for="username">Nom d'utilisateur</label>
+                </div>
+                <div class="form-item">
+                    <input type="date" id="date" autocomplete="off" required>
+                    <label for="date">Entrez votre date</label>
+                </div>
+                <br><br>
+                <div class="form-item">
+                    <select id="ChooseWebsite">
+                        <option value="default">Choisissez la conception de votre site Web</option>
+                        <option value="design">Conception de site Web 1</option>
+                        <option value="design">Conception de site Web 2</option>
+                        <option value="design">Conception d'application</option>
+                        <option value="design">UI/UX</option>
+                    </select>
+                </div>
+                <div class="form-item">
+                    <select id="ChooseWebsite">
+                        <option value="default">Choisissez la langue de votre site Web</option>
+                        <option value="lang">Anglais</option>
+                        <option value="lang">Espagnol</option>
+                        <option value="lang">Portugais</option>
+                        <option value="lang">Arabe</option>
+                        <option value="lang">Russe</option>
+                        <option value="lang">Allemand</option>
+                        <option value="lang">Français</option>
+                        <option value="lang">Italien</option>
+                        <option value="lang">Grec</option>
+                        <option value="lang">Suédois</option>
+                        <option value="lang">Néerlandais</option>
+                        <option value="lang">Polonais</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form form-2">
+                <div class="country-input">
+                    <div class="form-item">
+                        <select id="Country">
+                            <option value="default">Choisissez votre pays</option>
+                            <option value="Espagne">Espagne</option>
+                            <option value="États-Unis">États-Unis</option>
+                            <option value="Royaume-Uni">Royaume-Uni</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Australie">Australie</option>
+                            <option value="Allemagne">Allemagne</option>
+                            <option value="France">France</option>
+                            <option value="Italie">Italie</option>
+                            <option value="Pays-Bas">Pays-Bas</option>
+                            <option value="Brésil">Brésil</option>
+                            <option value="Chine">Chine</option>
+                            <option value="Inde">Inde</option>
+                            <option value="Japon">Japon</option>
+                            <option value="Corée du Sud">Corée du Sud</option>
+                            <option value="Mexique">Mexique</option>
+                            <option value="Argentine">Argentine</option>
+                            <option value="Afrique du Sud">Afrique du Sud</option>
+                            <option value="Arabie saoudite">Arabie saoudite</option>
+                            <option value="Émirats arabes unis">Émirats arabes unis</option>
+                            <option value="Suisse">Suisse</option>
+                            <option value="Suède">Suède</option>
+                            <option value="Norvège">Norvège</option>
+                            <option value="Danemark">Danemark</option>
+                            <option value="Finlande">Finlande</option>
+                            <option value="Pologne">Pologne</option>
+                            <option value="Autriche">Autriche</option>
+                            <option value="Belgique">Belgique</option>
+                            <option value="Grèce">Grèce</option>
+                            <option value="Portugal">Portugal</option>
+                            <option value="Irlande">Irlande</option>
+                            <option value="Nouvelle-Zélande">Nouvelle-Zélande</option>
+                            <option value="Singapour">Singapour</option>
+                            <option value="Malaisie">Malaisie</option>
+                            <option value="Thaïlande">Thaïlande</option>
+                            <option value="Indonésie">Indonésie</option>
+                            <option value="Philippines">Philippines</option>
+                            <option value="Vietnam">Vietnam</option>
+                            <option value="Égypte">Égypte</option>
+                            <option value="Nigéria">Nigéria</option>
+                            <option value="Kenya">Kenya</option>
+                            <option value="Maroc">Maroc</option>
+                            <option value="Pakistan">Pakistan</option>
+                            <option value="Bangladesh">Bangladesh</option>
+                            <option value="Colombie">Colombie</option>
+                            <option value="Chili">Chili</option>
+                            <option value="Pérou">Pérou</option>
+                            <option value="Venezuela">Venezuela</option>
+                            <option value="Ukraine">Ukraine</option>
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <input type="text" id="city" autocomplete="off" required>
+                        <label for="city">Indiquez votre ville</label>
+                    </div>
+                    <div class="form-item">
+                        <input type="text" id="street" autocomplete="off" required>
+                        <label for="street">Indiquez votre rue</label>
+                    </div>
+                    <div class="form-item">
+                        <input type="text" id="post" autocomplete="off" required>
+                        <label for="post">Indiquez votre code postal</label>
+                    </div>
+                    <br><br>
+                    <div class="form-item">
+                        <input type="text" id="color" autocomplete="off" required>
+                        <label for="color">Indiquez votre couleur préférée</label>
+                    </div>
+                    <div class="form-item">
+                        <input type="text" id="website" autocomplete="off" required>
+                        <label for="website">Dites-nous quel site Web vous voulez</label>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <button type="button">Acheter votre site</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- START TO ORIGINAL LOGIC -->
+    <!-- START TO ORIGINAL LOGIC --> <!-- START TO ORIGINAL LOGIC -->
+    <!-- START TO ORIGINAL LOGIC -->
+    <!-- START TO ORIGINAL LOGIC --> <!-- START TO ORIGINAL LOGIC -->
+    <!-- START TO ORIGINAL LOGIC -->
+
+
+
+    <header class="header">
+        <div class="lang-selector">
+            <select id="language">
+                <option value="default">Langue</option>
+                <option value="english" data-href="index.html">Anglais</option>
+                <option value="italian" data-href="indexit.html">Italien</option>
+                <option value="spanish" data-href="indexes.html">Espagnol</option>
+                <option value="german" data-href="indexge.html">Allemand</option>
+                <option value="armenian" data-href="indexam.html">Arménien</option>
+            </select>
+        </div>
+
+        <li class="logo" onclick="refresh()">S. Ghazaryan</li>
+        <ion-icon id="menu-btn" class="menu-btn" name="menu-outline"></ion-icon>
+        <nav class="navbar">
+            <a href="#home" id="homeButton" class="active">Accueil</a>
+            <a href="#about" id="aboutButton">À propos</a>
+            <a href="#services" id="servicesButton">Services</a>
+            <a href="#contact" id="contactButton">Contact</a>
+            <li class="buybtn" id="buyNowButton">Acheter maintenant</li>
+        </nav>
+    </header>
+
+
+    <div id="normal-logic" style="display: block;">
+        <div id="cookieConsent">
+            <p>Ce site Web utilise des cookies pour garantir que vous obtenez la meilleure expérience sur notre site. En
+                continuant à utiliser notre site, vous consentez à notre utilisation des cookies telle que décrite dans
+                notre <a href="/cookie-policy">Politique en matière de cookies</a>.</p>
+            <p>Nos cookies ne stockent pas d'informations personnelles telles que votre nom ou votre adresse e-mail. Ils
+                sont utilisés pour améliorer votre expérience en se souvenant des préférences et en fournissant des
+                données d'utilisation anonymes pour nous aider à comprendre comment les visiteurs utilisent notre site.
+            </p>
+            <button id="acceptCookies">Accepter les cookies</button>
+        </div>
+
+        <section id="home" class="home">
+            <div class="home-image">
+                <img class="profileimage" src="nodejs-1-logo-svgrepo-com (1).svg" alt="">
+                <img class="profileimage" src="react-svgrepo-com.svg" alt="">
+                <img class="profileimage" src="bootstrap-svgrepo-com.svg" alt="">
+                <img class="profileimage" src="c-sharp-svgrepo-com.svg" alt="">
+                <img class="profileimage" src="python-svgrepo-com.svg" alt="">
+                <img class="profileimage" src="html-5-svgrepo-com (1).svg" alt="">
+                <img class="profileimage" src="js-official-svgrepo-com.svg" alt="">
+                <img class="profileimage" src="css-3-svgrepo-com (2).svg" alt="">
+            </div>
+
+            <div class="home-content">
+                <h1>Bonjour, je suis Serg Ghazaryan</h1>
+                <h3>Développeur Frontal</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit aliquid minus neque perspiciatis
+                    veritatis nihil similique odio, alias consectetur vel iste facilis. Similique ducimus necessitatibus
+                    distinctio, quam minima assumenda quos.</p>
+
+                <div class="home-sci">
+                    <a title="Instagram" href="#"><i class='bx bxl-instagram-alt'></i></a>
+                    <a title="Twitter" href="#"><i class='bx bxl-twitter'></i></a>
+                    <a title="GitHub" href="#"><i class='bx bxl-github'></i></a>
+                </div>
+
+                <a href="#" class="btn">Télécharger CV</a>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="about-section">
+                <br><br>
+                <h2 style="width: max-content;">À propos de moi</h2>
+                <br><br>
+                <p>Bienvenue sur mon portfolio ! Je suis un développeur web avec une expérience dans la création de
+                    sites web
+                    modernes et réactifs. Mon objectif est de combiner la créativité et la fonctionnalité pour offrir
+                    des
+                    expériences numériques uniques et visuellement attrayantes.</p>
+            </div>
+            <div class="about-section">
+                <ul>
+                    <li><strong>Compétences :</strong> HTML, CSS, JavaScript, React, Node JS, C#, Python, Bootstrap.
+                    </li>
+                    <li><strong>Projets :</strong> Site web de shopping en ligne, Site web de chat, Site web de
+                        restaurant, Site web de jeux (similaire à Friv) et plus encore.</li>
+                    <li><strong>Contact :</strong> Vous pouvez le trouver ci-dessous.</li>
+
+                </ul>
+            </div>
+        </section>
+
+
+        <section id="services" class="about">
+            <div class="work-section">
+                <br><br>
+                <h2 style="color: #00abf0;" class="section__title">
+                    Mes Travaux <br>
+                    Les Plus Récents
+                </h2>
+
+                <div class="work__container container grid">
+                    <article class="work__card">
+                        <button onclick="buynow()" class="work__link">
+                            <img src="project1.png" alt="image" class="work__img">
+                            <i class='bx bx-right-arrow-circle work__icon'></i>
+                        </button>
+
+                        <h2 class="work__title">Site Web Créatif</h2>
+                        <span class="work__subtitle">Design de Site Web</span>
+                    </article>
+
+                    <br>
+                    <hr style="width: 60%;
+                        margin-left: 19.5%;"><br><br>
+
+                    <article class="work__card">
+                        <button onclick="buynow()" class="work__link">
+                            <img src="project2.png" alt="image" class="work__img">
+                            <i class='bx bx-right-arrow-circle work__icon'></i>
+                        </button>
+
+                        <h2 class="work__title">Site Web Créatif</h2>
+                        <span class="work__subtitle">Design de Site Web</span>
+                    </article>
+
+                    <br>
+                    <hr style="width: 60%;
+                        margin-left: 19.5%;"><br><br>
+
+                    <article class="work__card">
+                        <button onclick="buynow()" class="work__link">
+                            <img src="project3.png" alt="image" class="work__img">
+                            <i class='bx bx-right-arrow-circle work__icon'></i>
+                        </button>
+
+                        <h2 class="work__title">Superbe Application</h2>
+                        <span class="work__subtitle">Design d'Application</span>
+                    </article>
+
+                    <br>
+                    <hr style="width: 60%;
+                        margin-left: 19.5%;"><br><br>
+
+                    <article class="work__card">
+                        <button onclick="buynow()" class="work__link">
+                            <img src="project4.png" alt="image" class="work__img">
+                            <i class='bx bx-right-arrow-circle work__icon'></i>
+                        </button>
+
+                        <h2 class="work__title">Design d'Interface</h2>
+                        <span class="work__subtitle">UI/UX</span>
+                    </article>
+                </div>
+
+            </div>
+            <br>
+            <hr style="width: 60%;
+                    margin-left: 19.5%;">
+    </div>
+    </div>
+    </section>
+
+
+    <section id="contact" class="contact">
+        <br><br>
+        <h2>Contactez-moi</h2>
+        <form action="">
+            <div class="input-box">
+                <div class="input-field field">
+                    <input type="text" placeholder="Nom complet" id="name" class="item" autocomplete="off">
+                    <div class="error-txt">Le nom complet ne peut pas être vide</div>
+                </div>
+                <div class="input-field field">
+                    <input type="text" placeholder="Adresse e-mail" id="email" class="item" autocomplete="off">
+                    <div class="error-txt email">L'adresse e-mail ne peut pas être vide</div>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <div class="input-field field">
+                    <input type="text" placeholder="Numéro de téléphone" id="phone" class="item" autocomplete="off">
+                    <div class="error-txt">Le numéro de téléphone ne peut pas être vide</div>
+                </div>
+                <div class="input-field field">
+                    <input type="text" placeholder="Sujet" id="subject" class="item" autocomplete="off">
+                    <div class="error-txt">Le sujet ne peut pas être vide</div>
+                </div>
+            </div>
+
+            <div class="textarea-field field">
+                <textarea id="message" cols="30" rows="10" placeholder="Votre message" class="item"
+                    autocomplete="off"></textarea>
+                <div class="error-txt">Le message ne peut pas être vide</div>
+            </div>
+
+            <button type="submit" onclick="sendEmail()">Envoyer le message</button>
+        </form>
+        <br>
+        <hr>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-left">
+                        <h3>Suivez-moi</h3>
+                        <ul class="social-links">
+                            <li><a title="Instagram" href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+                            <li><a title="Twitter" href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
+                            <li><a title="GitHub" href="#"><ion-icon name="logo-github"></ion-icon></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-right">
+                        <h3>Contactez notre bureau</h3>
+                        <ul class="list-unstyled li-space-lg">
+                            <p><span class="material-icons icon">
+                                    phone
+                                </span><a title="Numéro de téléphone" href="tel:003024630820">+34
+                                    614 188 876</a></p>
+                            <p><span class="material-icons icon">
+                                    email
+                                </span><a title="E-mail"
+                                    href="mailto:armour.american.councils@gmail.com">ghazaryan7.y@gmail.com</a>
+                            </p>
+                        </ul>
+                    </div>
+                    <p class="copyright">
+                        &copy; 2024 Site Web de Serg. Tous droits réservés.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </section>
+    </div>
+
+    </div>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="email.js"></script>
+
+    <script src="scriptfr.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

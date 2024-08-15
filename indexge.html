@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serg's Website | GE | Startseite</title>
+    <link type="png" rel="Website icon" href="logoPortfolio.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div id="buynow-logic" style="display: none;">
+        <style>
+            .form {
+                width: 500px;
+                margin: 0 auto;
+                margin-top: 150px;
+                background: #fff;
+            }
+
+            .form-item {
+                position: relative;
+                margin-bottom: 15px;
+            }
+
+            .form-item input {
+                display: block;
+                width: 400px;
+                height: 43px;
+                background: transparent;
+                border: 1px solid #ccc;
+                transition: all .3s ease;
+                padding: 0 15px;
+            }
+
+            .form-item input:focus {
+                border-color: blue;
+            }
+
+            .form-item label {
+                position: absolute;
+                cursor: pointer;
+                z-index: 2;
+                top: 13px;
+                left: 10px;
+                font-size: 12px;
+                font-weight: bold;
+                background: #fff;
+                padding: 0 10px;
+                color: #999;
+                transition: all .3s ease;
+            }
+
+            .form-item input:focus+label,
+            .form-item input:valid+label {
+                font-size: 11px;
+                top: -5px;
+            }
+
+            .form-item input:focus+label {
+                color: blue;
+            }
+
+            #Phones {
+                width: 75.3%;
+            }
+
+            #PhoneInput {
+                margin-left: 18.7%;
+            }
+
+            #Country,
+            #ChooseWebsite,
+            #countryCode {
+                padding: 11.5px 0;
+                border: 1px solid #ccc;
+                border-radius: 0;
+                outline: none;
+                color: #999;
+                font-weight: bold;
+                font-size: 12px;
+            }
+
+            #countryCode {
+                transform: translateY(156.25%);
+            }
+
+            #Country,
+            #ChooseWebsite {
+                width: 400px;
+            }
+
+            .form-1 {
+                margin-left: 17%;
+                margin-top: 0;
+            }
+
+            .form-2 {
+                margin-left: 55%;
+                margin-top: -25.75%;
+            }
+
+            #info {
+                transform: translateY(1470%);
+                margin-left: 40.5%;
+            }
+
+            #info2 {
+                transform: translateY(250%);
+                margin-left: 41.5%;
+            }
+
+            #buyform button {
+                margin-left: -37%;
+            }
+
+            #buyform hr {
+                margin-left: -135%;
+            }
+        </style>
+
+        <script>
+
+            ///////////////////////////////
+            ////////   PHONE INPUT   //////
+            ///////////////////////////////
+
+            function validatePhoneNumber(event) {
+                const input = event.target;
+                const inputValue = input.value;
+                const numericValue = inputValue.replace(/\D/g, '');
+                input.value = numericValue;
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                var phoneInput = document.getElementById("Phones");
+                var countryCodeSelect = document.getElementById("countryCode");
+
+                phoneInput.addEventListener("input", function () {
+                    formatPhoneNumber();
+                });
+
+                countryCodeSelect.addEventListener("change", function () {
+                    phoneInput.value = ''; // Clear the input
+                    formatPhoneNumber();
+                });
+
+                phoneInput.addEventListener("keydown", function (event) {
+                    if (event.key === "Backspace" || event.key === "Delete") {
+                        phoneInput.value = '';
+                        formatPhoneNumber();
+                    }
+                });
+            });
+
+            function formatPhoneNumber() {
+                var phoneInput = document.getElementById("Phones");
+                var countryCodeSelect = document.getElementById("countryCode");
+                var phoneNumber = phoneInput.value.replace(/\D/g, ''); // Remove non-numeric characters
+
+                if (countryCodeSelect.value !== "ARM") {
+                    phoneInput.value = formatNonArmenianPhoneNumber(phoneNumber);
+                } else {
+                    phoneInput.value = formatArmenianPhoneNumber(phoneNumber);
+                }
+            }
+
+            function formatNonArmenianPhoneNumber(phoneNumber) {
+                var formattedNumber = '';
+
+                if (phoneNumber.length > 0) {
+                    formattedNumber += '(' + phoneNumber.substring(0, 3) + ')';
+
+                    if (phoneNumber.length > 3) {
+                        formattedNumber += ' ' + phoneNumber.substring(3, 6);
+
+                        if (phoneNumber.length > 6) {
+                            formattedNumber += '-' + phoneNumber.substring(6, 10);
+                        }
+                    }
+                }
+
+                return formattedNumber;
+            }
+
+            function formatArmenianPhoneNumber(phoneNumber) {
+                var formattedNumber = '';
+
+                if (phoneNumber.length > 0) {
+                    formattedNumber += '(' + phoneNumber.substring(0, 2) + ')';
+
+                    if (phoneNumber.length > 2) {
+                        formattedNumber += ' ' + phoneNumber.substring(2, 4);
+
+                        if (phoneNumber.length > 4) {
+                            formattedNumber += '-' + phoneNumber.substring(4, 6);
+
+                            if (phoneNumber.length > 6) {
+                                formattedNumber += '-' + phoneNumber.substring(6, 10);
+                            }
+                        }
+                    }
+                }
+
+                return formattedNumber;
+            }
+        </script>
+
+        <div id="buyform">
+            <br><br>
+            <p id="info">Ein wenig Informationen über Ihre Webseite.</p>
+            <p id="info2">Ein wenig Informationen von Ihnen.</p>
+            <div class="form form-1">
+                <select id="countryCode">
+                    <option value="ESP">ESP (+34)</option>
+                    <option value="FRA">FRA (+33)</option>
+                    <option value="UAE">VAE (+971)</option>
+                    <option value="ARM">ARM (+374)</option>
+                </select>
+                <br><br>
+                <div class="form-item" id="PhoneInput">
+                    <input type="text" id="Phones" maxlength="13" autocomplete="off"
+                        oninput="validatePhoneNumber(event)" required>
+                    <label for="phone">Geben Sie Ihre Telefonnummer ein</label>
+                </div>
+                <div class="form-item">
+                    <input type="text" id="name" autocomplete="off" required>
+                    <label for="name">Name</label>
+                </div>
+                <div class="form-item">
+                    <input type="text" id="username" autocomplete="off" required>
+                    <label for="username">Benutzername</label>
+                </div>
+                <div class="form-item">
+                    <input type="date" id="date" autocomplete="off" required>
+                    <label for="date">Geben Sie Ihr Datum ein</label>
+                </div>
+                <br><br>
+                <div class="form-item">
+                    <select id="ChooseWebsite">
+                        <option value="default">Wählen Sie das Design Ihrer Webseite</option>
+                        <option value="design">Webseiten-Design 1</option>
+                        <option value="design">Webseiten-Design 2</option>
+                        <option value="design">App-Design</option>
+                        <option value="design">UI/UX</option>
+                    </select>
+                </div>
+                <div class="form-item">
+                    <select id="ChooseWebsite">
+                        <option value="default">Wählen Sie die Sprache Ihrer Webseite</option>
+                        <option value="lang">Englisch</option>
+                        <option value="lang">Spanisch</option>
+                        <option value="lang">Portugiesisch</option>
+                        <option value="lang">Arabisch</option>
+                        <option value="lang">Russisch</option>
+                        <option value="lang">Deutsch</option>
+                        <option value="lang">Französisch</option>
+                        <option value="lang">Italienisch</option>
+                        <option value="lang">Griechisch</option>
+                        <option value="lang">Schwedisch</option>
+                        <option value="lang">Niederländisch</option>
+                        <option value="lang">Polnisch</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form form-2">
+                <div class="country-input">
+                    <div class="form-item">
+                        <select id="Country">
+                            <option value="default">Wählen Sie Ihr Land</option>
+                            <option value="Spanien">Spanien</option>
+                            <option value="Vereinigte Staaten">Vereinigte Staaten</option>
+                            <option value="Vereinigtes Königreich">Vereinigtes Königreich</option>
+                            <option value="Kanada">Kanada</option>
+                            <option value="Australien">Australien</option>
+                            <option value="Deutschland">Deutschland</option>
+                            <option value="Frankreich">Frankreich</option>
+                            <option value="Italien">Italien</option>
+                            <option value="Niederlande">Niederlande</option>
+                            <option value="Brasilien">Brasilien</option>
+                            <option value="China">China</option>
+                            <option value="Indien">Indien</option>
+                            <option value="Japan">Japan</option>
+                            <option value="Südkorea">Südkorea</option>
+                            <option value="Mexiko">Mexiko</option>
+                            <option value="Argentinien">Argentinien</option>
+                            <option value="Südafrika">Südafrika</option>
+                            <option value="Saudi-Arabien">Saudi-Arabien</option>
+                            <option value="Vereinigte Arabische Emirate">Vereinigte Arabische Emirate</option>
+                            <option value="Schweiz">Schweiz</option>
+                            <option value="Schweden">Schweden</option>
+                            <option value="Norwegen">Norwegen</option>
+                            <option value="Dänemark">Dänemark</option>
+                            <option value="Finnland">Finnland</option>
+                            <option value="Polen">Polen</option>
+                            <option value="Österreich">Österreich</option>
+                            <option value="Belgien">Belgien</option>
+                            <option value="Griechenland">Griechenland</option>
+                            <option value="Portugal">Portugal</option>
+                            <option value="Irland">Irland</option>
+                            <option value="Neuseeland">Neuseeland</option>
+                            <option value="Singapur">Singapur</option>
+                            <option value="Malaysia">Malaysia</option>
+                            <option value="Thailand">Thailand</option>
+                            <option value="Indonesien">Indonesien</option>
+                            <option value="Philippinen">Philippinen</option>
+                            <option value="Vietnam">Vietnam</option>
+                            <option value="Ägypten">Ägypten</option>
+                            <option value="Nigeria">Nigeria</option>
+                            <option value="Kenia">Kenia</option>
+                            <option value="Marokko">Marokko</option>
+                            <option value="Pakistan">Pakistan</option>
+                            <option value="Bangladesch">Bangladesch</option>
+                            <option value="Kolumbien">Kolumbien</option>
+                            <option value="Chile">Chile</option>
+                            <option value="Peru">Peru</option>
+                            <option value="Venezuela">Venezuela</option>
+                            <option value="Ukraine">Ukraine</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-item">
+                <input type="text" id="city" autocomplete="off" required>
+                <label for="city">Geben Sie Ihre Stadt an</label>
+            </div>
+            <div class="form-item">
+                <input type="text" id="street" autocomplete="off" required>
+                <label for="street">Geben Sie Ihre Straße an</label>
+            </div>
+            <div class="form-item">
+                <input type="text" id="post" autocomplete="off" required>
+                <label for="post">Geben Sie Ihre Postleitzahl an</label>
+            </div>
+            <br><br>
+            <div class="form-item">
+                <input type="text" id="color" autocomplete="off" required>
+                <label for="color">Geben Sie Ihre bevorzugte Farbe an</label>
+            </div>
+            <div class="form-item">
+                <input type="text" id="website" autocomplete="off" required>
+                <label for="website">Sagen Sie uns, welche Webseite Sie möchten</label>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <button type="button">Kaufen Sie Ihre Webseite</button>
+    </div>
+    </div>
+    </div>
+
+
+
+    <!-- START TO ORIGINAL LOGIC -->
+    <!-- START TO ORIGINAL LOGIC --> <!-- START TO ORIGINAL LOGIC -->
+    <!-- START TO ORIGINAL LOGIC -->
+    <!-- START TO ORIGINAL LOGIC --> <!-- START TO ORIGINAL LOGIC -->
+    <!-- START TO ORIGINAL LOGIC -->
+
+
+
+    <header class="header">
+        <div class="lang-selector">
+            <select id="language">
+                <option value="default">Sprache</option>
+                <option value="english" data-href="index.html">Englisch</option>
+                <option value="italien" data-href="indexit.html">Italienisch</option>
+                <option value="spanisch" data-href="indexes.html">Spanisch</option>
+                <option value="french" data-href="indexfr.html">Französisch</option>
+                <option value="armenian" data-href="indexam.html">Armenisch</option>
+            </select>
+        </div>
+
+        <li class="logo" onclick="refresh()">S. Ghazaryan</li>
+        <ion-icon id="menu-btn" class="menu-btn" name="menu-outline"></ion-icon>
+        <nav class="navbar">
+            <a href="#home" id="homeButton" class="active">Startseite</a>
+            <a href="#about" id="aboutButton">Über uns</a>
+            <a href="#services" id="servicesButton">Dienstleistungen</a>
+            <a href="#contact" id="contactButton">Kontakt</a>
+            <li class="buybtn" id="buyNowButton">Jetzt kaufen</li>
+        </nav>
+    </header>
+
+
+    <div id="normal-logic" style="display: block;">
+        <div id="cookieConsent">
+            <p>Diese Website verwendet Cookies, um sicherzustellen, dass Sie die beste Erfahrung auf unserer Website
+                erhalten. Durch die weitere Nutzung unserer Website stimmen Sie unserer Verwendung von Cookies gemäß
+                unserer <a href="/cookie-policy">Cookie-Richtlinie</a> zu.</p>
+            <p>Unsere Cookies speichern keine persönlichen Informationen wie Ihren Namen oder Ihre E-Mail-Adresse. Sie
+                werden verwendet, um Ihre Erfahrung zu verbessern, indem sie Präferenzen speichern und anonyme
+                Nutzungsdaten bereitstellen, um uns zu helfen zu verstehen, wie Besucher unsere Website nutzen.</p>
+            <button id="acceptCookies">Cookies akzeptieren</button>
+        </div>
+
+
+        <section id="home" class="home">
+            <div class="home-image">
+                <img class="profileimage" src="nodejs-1-logo-svgrepo-com (1).svg" alt="">
+                <img class="profileimage" src="react-svgrepo-com.svg" alt="">
+                <img class="profileimage" src="bootstrap-svgrepo-com.svg" alt="">
+                <img class="profileimage" src="c-sharp-svgrepo-com.svg" alt="">
+                <img class="profileimage" src="python-svgrepo-com.svg" alt="">
+                <img class="profileimage" src="html-5-svgrepo-com (1).svg" alt="">
+                <img class="profileimage" src="js-official-svgrepo-com.svg" alt="">
+                <img class="profileimage" src="css-3-svgrepo-com (2).svg" alt="">
+            </div>
+
+            <div class="home-content">
+                <h1>Hallo, ich bin Serg Ghazaryan</h1>
+                <h3>Frontend-Entwickler</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit aliquid minus neque perspiciatis
+                    veritatis nihil similique odio, alias consectetur vel iste facilis. Similique ducimus necessitatibus
+                    distinctio, quam minima assumenda quos.</p>
+
+                <div class="home-sci">
+                    <a title="Instagram" href="#"><i class='bx bxl-instagram-alt'></i></a>
+                    <a title="Twitter" href="#"><i class='bx bxl-twitter'></i></a>
+                    <a title="GitHub" href="#"><i class='bx bxl-github'></i></a>
+                </div>
+
+                <a href="#" class="btn">Lebenslauf herunterladen</a>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="about-section">
+                <br><br>
+                <h2 style="width: max-content;">Über mich</h2>
+                <br><br>
+                <p>Willkommen auf meinem Portfolio! Ich bin ein Webentwickler mit Erfahrung in der Erstellung moderner
+                    und reaktionsfähiger Websites. Mein Ziel ist es, Kreativität und Funktionalität zu kombinieren, um
+                    einzigartige und visuell ansprechende digitale Erlebnisse zu schaffen.</p>
+            </div>
+            <div class="about-section">
+                <ul>
+                    <li><strong>Fähigkeiten:</strong> HTML, CSS, JavaScript, React, Node JS, C#, Python, Bootstrap.</li>
+                    <li><strong>Projekte:</strong> Online-Shop-Website, Chat-Website, Restaurant-Website, Spiele-Website
+                        (ähnlich wie Friv) und mehr.</li>
+                    <li><strong>Kontakt:</strong> Du kannst es unten finden.</li>
+
+                </ul>
+            </div>
+        </section>
+
+
+
+        <section id="services" class="about">
+            <div class="work-section">
+                <br><br>
+                <h2 style="color: #00abf0;" class="section__title">
+                    Meine <br>
+                    Neuesten Arbeiten
+                </h2>
+
+                <div class="work__container container grid">
+                    <article class="work__card">
+                        <button onclick="buynow()" class="work__link">
+                            <img src="project1.png" alt="Bild" class="work__img">
+                            <i class='bx bx-right-arrow-circle work__icon'></i>
+                        </button>
+
+                        <h2 class="work__title">Kreative Webseite</h2>
+                        <span class="work__subtitle">Webdesign</span>
+                    </article>
+
+                    <br>
+                    <hr style="width: 60%;
+                        margin-left: 19.5%;"><br><br>
+
+                    <article class="work__card">
+                        <button onclick="buynow()" class="work__link">
+                            <img src="project2.png" alt="Bild" class="work__img">
+                            <i class='bx bx-right-arrow-circle work__icon'></i>
+                        </button>
+
+                        <h2 class="work__title">Kreative Webseite</h2>
+                        <span class="work__subtitle">Webdesign</span>
+                    </article>
+
+                    <br>
+                    <hr style="width: 60%;
+                        margin-left: 19.5%;"><br><br>
+
+                    <article class="work__card">
+                        <button onclick="buynow()" class="work__link">
+                            <img src="project3.png" alt="Bild" class="work__img">
+                            <i class='bx bx-right-arrow-circle work__icon'></i>
+                        </button>
+
+                        <h2 class="work__title">Tolle App</h2>
+                        <span class="work__subtitle">App-Design</span>
+                    </article>
+
+                    <br>
+                    <hr style="width: 60%;
+                        margin-left: 19.5%;"><br><br>
+
+                    <article class="work__card">
+                        <button onclick="buynow()" class="work__link">
+                            <img src="project4.png" alt="Bild" class="work__img">
+                            <i class='bx bx-right-arrow-circle work__icon'></i>
+                        </button>
+
+                        <h2 class="work__title">Interface Design</h2>
+                        <span class="work__subtitle">UI/UX</span>
+                    </article>
+                </div>
+
+            </div>
+            <br>
+            <hr style="width: 60%;
+                margin-left: 19.5%;">
+        </section>
+
+
+
+        <section id="contact" class="contact">
+            <br><br>
+            <h2>Kontaktieren Sie mich</h2>
+            <form action="">
+                <div class="input-box">
+                    <div class="input-field field">
+                        <input type="text" placeholder="Vollständiger Name" id="name" class="item" autocomplete="off">
+                        <div class="error-txt">Der vollständige Name darf nicht leer sein</div>
+                    </div>
+                    <div class="input-field field">
+                        <input type="text" placeholder="E-Mail-Adresse" id="email" class="item" autocomplete="off">
+                        <div class="error-txt email">Die E-Mail-Adresse darf nicht leer sein</div>
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <div class="input-field field">
+                        <input type="text" placeholder="Telefonnummer" id="phone" class="item" autocomplete="off">
+                        <div class="error-txt">Die Telefonnummer darf nicht leer sein</div>
+                    </div>
+                    <div class="input-field field">
+                        <input type="text" placeholder="Betreff" id="subject" class="item" autocomplete="off">
+                        <div class="error-txt">Der Betreff darf nicht leer sein</div>
+                    </div>
+                </div>
+
+                <div class="textarea-field field">
+                    <textarea id="message" cols="30" rows="10" placeholder="Ihre Nachricht" class="item"
+                        autocomplete="off"></textarea>
+                    <div class="error-txt">Die Nachricht darf nicht leer sein</div>
+                </div>
+
+                <button type="submit" onclick="sendEmail()">Nachricht senden</button>
+            </form>
+            <br>
+            <hr>
+            <footer class="footer">
+                <div class="container">
+                    <div class="footer-content">
+                        <div class="footer-left">
+                            <h3>Folgen Sie mir</h3>
+                            <ul class="social-links">
+                                <li><a title="Instagram" href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+                                <li><a title="Twitter" href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
+                                <li><a title="GitHub" href="#"><ion-icon name="logo-github"></ion-icon></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-right">
+                            <h3>Kontaktieren Sie unser Büro</h3>
+                            <ul class="list-unstyled li-space-lg">
+                                <p><span class="material-icons icon">
+                                        phone
+                                    </span><a title="Telefonnummer" href="tel:003024630820">+34
+                                        614 188 876</a></p>
+                                <p><span class="material-icons icon">
+                                        email
+                                    </span><a title="E-Mail"
+                                        href="mailto:armour.american.councils@gmail.com">ghazaryan7.y@gmail.com</a></p>
+                            </ul>
+                        </div>
+                        <p class="copyright">
+                            &copy; 2024 Website von Serg. Alle Rechte vorbehalten.
+                        </p>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+
+    </div>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="email.js"></script>
+
+    <script src="scriptge.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
