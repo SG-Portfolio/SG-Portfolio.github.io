@@ -226,15 +226,7 @@ navLinks.forEach(function(navLink) {
         this.classList.add("active");
 
         // Show/hide content based on link clicked
-        if (this === buyNowButton) {
-          normalLogic.style.display = "none";
-          Contact.style.display = "none";
-          buyNowLogic.style.display = "block";
-      } else {
-          normalLogic.style.display = "block";
-          Contact.style.display = "block";
-          buyNowLogic.style.display = "none";
-      }
+       
     });
 });
 
@@ -245,8 +237,22 @@ buyNowButton.addEventListener("click", function() {
     });
     buyNowButton.classList.add("active");
 
-    // Show/hide content based on "Buy Now" button clicked
-    normalLogic.style.display = "none";
-    buyNowLogic.style.display = "block";
 });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+        const menuBtn = document.getElementById('menu-btn');
+        const navbar = document.getElementById('navbar');
+
+        menuBtn.addEventListener('click', function () {
+            // Toggle the 'show' class on the navbar
+            navbar.classList.toggle('show');
+        });
+
+        // Close the navbar if clicking outside
+        document.addEventListener('click', function (event) {
+            if (!menuBtn.contains(event.target) && !navbar.contains(event.target)) {
+                navbar.classList.remove('show');
+            }
+        });
+    });
